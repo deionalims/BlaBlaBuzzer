@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity"
+    android:orientation="horizontal"
+    android:divider="@drawable/space_extra_large"
+    android:showDividers="middle">
+
+    <Button
+        android:id="@+id/master_button"
+        android:padding="16dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="@string/master"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/slave_button"
+        android:padding="16dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="@string/slave"
+        android:layout_weight="1"/>
+
+
+</LinearLayout>

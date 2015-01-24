@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/waiting_for_game_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/waiting_for_game_to_start"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+
+    <ImageButton
+        android:id="@+id/buzzer_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/button"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
+
+    <View
+        android:id="@+id/ok_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_green_light"
+        android:visibility="invisible"/>
+
+    <View
+        android:id="@+id/nok_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_red_light"
+        android:visibility="invisible"/>
+
+</FrameLayout>
