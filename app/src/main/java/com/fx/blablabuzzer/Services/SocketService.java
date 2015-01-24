@@ -16,6 +16,7 @@ import com.fx.blablabuzzer.Objects.Player;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -26,7 +27,6 @@ public class SocketService extends IntentService {
 
     public static volatile boolean shouldContinue = true;
     private static final int BUFFER_SIZE = 8192;
-    private static final int ACCEPT_TIMEOUT = 300000;
 
     public SocketService(){
         super("BlaBlaBuzzerSocketService");
@@ -37,10 +37,12 @@ public class SocketService extends IntentService {
 
         Socket socket = null;
         InputStream inputStream;
+        ServerSocket serverSocket = null;
 
         try {
-            ServerSocket serverSocket = new ServerSocket(Constants.PORT);
-            serverSocket.setSoTimeout(ACCEPT_TIMEOUT);
+            serverSocket = new ServerSocket();
+            serverSocket.setReuseAddress(true);
+            serverSocket.bind(new InetSocketAddress(Constants.PORT));
 
             while (shouldContinue){
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(BUFFER_SIZE);
@@ -90,6 +92,13 @@ public class SocketService extends IntentService {
                 }
             }
 
+            if (null != serverSocket){
+                try {
+                    serverSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     }
